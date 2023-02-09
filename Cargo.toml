@@ -1,0 +1,24 @@
+[package]
+name = "rsa-utils"
+version = "0.1.0"
+authors = ["NexToken Tech LLC <team@trex.ink> and Integritee AG <hello@integritee.network>"]
+edition = "2021"
+
+[dependencies]
+codec  = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive"] }
+# sgx dependencies
+sgx_tstd = { git = "https://github.com/apache/teaclave-sgx-sdk.git", features = ["untrusted_fs","net","backtrace"] , optional = true }
+serde = { git = "https://github.com/mesalock-linux/serde-sgx",default-features = false, features = ["derive", "alloc"] , optional = true }
+
+[patch.'https://github.com/apache/teaclave-sgx-sdk.git']
+sgx_tstd = { version = "1.1.5", git = "https://github.com/apache/incubator-teaclave-sgx-sdk", tag = "v1.1.5" }
+
+[features]
+default = ["sgx"]
+std = [
+    "codec/std",
+]
+sgx = [
+    "sgx_tstd",
+    "serde"
+]
