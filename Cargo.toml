@@ -1,7 +1,7 @@
 [package]
-name = "rsa-utils"
+name = "rsa-sgx"
 version = "0.1.0"
-authors = ["NexToken Tech LLC <team@trex.ink> and Integritee AG <hello@integritee.network>"]
+authors = ["NexToken Tech LLC <team@trex.ink>","Nikita Khateev <nikita.khateev@dsr-corporation.com>", "Kirk Baird <baird.k@outlook.com>"]
 edition = "2021"
 
 [dependencies]

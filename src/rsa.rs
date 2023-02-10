@@ -29,7 +29,7 @@ pub const SHA512: usize = 64;
 
 pub const HASH_TYPE: usize = SHA256;
 
-#[derive(Debug,Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct RsaPrivateKey {
 	pub p: FF,
 	pub q: FF,
@@ -38,7 +38,7 @@ pub struct RsaPrivateKey {
 	pub c: FF,
 }
 
-#[derive(Debug,Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct RsaPublicKey {
 	pub e: isize,
 	pub n: FF,
@@ -410,7 +410,7 @@ pub fn oaep_decode(sha: usize, p: Option<&[u8]>, f: &mut [u8]) -> usize {
 		dbmask[i] = 0
 	}
 
-	return olen - seedlen - hlen - k - 1;
+	return olen - seedlen - hlen - k - 1
 }
 
 /* destroy the Private Key structure */
