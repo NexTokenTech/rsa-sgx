@@ -1,8 +1,8 @@
 // re-export module to properly feature gate sgx and regular std environment
-#![cfg_attr(not(target_env = "sgx"), no_std)]
+// #![cfg_attr(not(target_env = "sgx"), no_std)]
 
 #[cfg(feature = "sgx")]
-extern crate sgx_tstd as std;
+pub extern crate sgx_tstd as std;
 
 pub use std::{cmp::Ordering, fmt};
 
