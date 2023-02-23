@@ -1,5 +1,5 @@
 // re-export module to properly feature gate sgx and regular std environment
-// #![cfg_attr(not(target_env = "sgx"), no_std)]
+#![cfg_attr(not(feature = "std"), no_std)]
 
 #[cfg(feature = "sgx")]
 pub extern crate sgx_tstd as std;

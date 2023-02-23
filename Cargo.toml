@@ -3,27 +3,22 @@ name = "rsa-sgx"
 version = "0.1.0"
 authors = ["NexToken Tech LLC <team@trex.ink>","Nikita Khateev <nikita.khateev@dsr-corporation.com>", "Kirk Baird <baird.k@outlook.com>"]
 edition = "2021"
-
 [dependencies]
 codec  = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive"] }
 # sgx dependencies
 sgx_tstd = { git = "https://github.com/apache/teaclave-sgx-sdk.git", features = ["untrusted_fs","net","backtrace"] , optional = true }
-#serde = { package="serde" ,git = "https://github.com/mesalock-linux/serde-sgx",default-features = false, features = ["derive", "alloc"] , optional = true }
-#serde_json = { package="serde_json" ,git = "https://github.com/mesalock-linux/serde-json-sgx", optional = true }
-serde = { version = "1.0", features = ["derive", "alloc"]  , optional = true}
-serde_json = {version="1.0" , optional = true}
+serde = { package="serde",git = "https://github.com/mesalock-linux/serde-sgx",default-features = false, features = ["derive", "alloc"] , optional = true }
 
 [patch.'https://github.com/apache/teaclave-sgx-sdk.git']
-sgx_tstd = { version = "1.1.5", git = "https://github.com/apache/incubator-teaclave-sgx-sdk",tag = "v1.1.5"  }
+sgx_tstd = { version = "1.1.5", git = "https://github.com/apache/incubator-teaclave-sgx-sdk",tag = "v1.1.5"}
 
 [features]
 default = ["std"]
 std = [
     "codec/std",
-    "serde/std",
+    "serde/derive",
 ]
 sgx = [
     "sgx_tstd",
     "serde",
-    "serde_json"
 ]
